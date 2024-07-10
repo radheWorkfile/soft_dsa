@@ -14,7 +14,7 @@
 
              <div class="row">
                 <div class="col-md-12" style="position:absolute;top:19.5rem;left:14.5rem;width:38%;display:flex;">
-                <div class=""><p style="color:#e9ebed;">Id No&nbsp;-</p></div>
+                <div class=""><p style="color:white;">Id No&nbsp;-</p></div>
                 <div class=""><p style="color:white;"><?php echo $cus_details['agent_id']?></span></p></div>
                 </div>
              </div>

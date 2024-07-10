@@ -27,7 +27,8 @@ class Agent extends CI_Controller
         $this->form_validation->set_rules('dob', 'Date of Birth', 'required');
         $this->form_validation->set_rules('address', 'Address', 'required');
         $this->form_validation->set_rules('mobile_no', 'Mobile No.', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required');
+        $this->form_validation->set_rules('email', 'Email', 'required|is_unique[agent.email]');
+        $this->form_validation->set_rules('password', 'Password', 'required|is_unique[agent.password]');
         $this->form_validation->set_rules('aadhar_card_no', 'Aadhar Card No.', 'required');
         $this->form_validation->set_rules('pan_no', 'Pan No.', 'required');
         
@@ -117,6 +118,7 @@ class Agent extends CI_Controller
                 'address'        => form_error('address'),
                 'mobile_no'      => form_error('mobile_no'),
                 'email'          => form_error('email'),
+                'password'       => form_error('password'),
                 'aadhar_card_no' => form_error('aadhar_card_no'),
 
             );

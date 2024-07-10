@@ -60,10 +60,10 @@
             $this->form_validation->set_rules('dob', 'Date of Birth', 'required');
             $this->form_validation->set_rules('address', 'Address', 'required');
             $this->form_validation->set_rules('mobile_no', 'Mobile No.', 'required');
-            $this->form_validation->set_rules('email', 'Email', 'required');
+            $this->form_validation->set_rules('email', 'Email', 'required|is_unique[customer.email]');
             $this->form_validation->set_rules('aadhar_card_no', 'Aadhar Card No.', 'required');
             $this->form_validation->set_rules('pan_no', 'Pan No.', 'required');
-            $this->form_validation->set_rules('password', 'Password', 'required');
+            $this->form_validation->set_rules('password', 'Password', 'required|is_unique[customer.password]');
             $this->form_validation->set_rules('loan_type', 'Loan Type', 'required');
             $this->form_validation->set_rules('loan_amount', 'Loan Amount', 'required');
             $this->form_validation->set_rules('document_status', 'Document Status', 'required');

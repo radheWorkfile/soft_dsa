@@ -61,10 +61,10 @@ class Customer extends CI_Controller
         $this->form_validation->set_rules('dob', 'Date of Birth', 'required');
         $this->form_validation->set_rules('address', 'Address', 'required');
         $this->form_validation->set_rules('mobile_no', 'Mobile No.', 'required');
-        $this->form_validation->set_rules('email', 'Email', 'required|is_unique[customer.email]');
+        $this->form_validation->set_rules('email', 'Email', 'required');
         $this->form_validation->set_rules('aadhar_card_no', 'Aadhar Card No.', 'required');
         $this->form_validation->set_rules('pan_no', 'Pan No.', 'required');
-        $this->form_validation->set_rules('password', 'Password', 'required|is_unique[customer.password]');
+        $this->form_validation->set_rules('password', 'Password', 'required');
         $this->form_validation->set_rules('loan_type', 'Loan Type', 'required');
         $this->form_validation->set_rules('loan_amount', 'Loan Amount', 'required');
 
@@ -73,6 +73,7 @@ class Customer extends CI_Controller
             $add = $this->input->post();
 
             $customer_id = rand(pow(10, 6 - 1), pow(10, 6) - 1);
+
             $config['upload_path']   = './uploads/customer_all_document/';
             $config['allowed_types'] = 'gif|jpg|png|jpeg|pdf';
             $config['max_size']      = config_item('image_size');
@@ -388,7 +389,7 @@ class Customer extends CI_Controller
                 'created_at'              => date('Y-m-d'),
 
             );
-            $this->common_model->save_data('customer', $customer);  
+            $this->common_model->save_data('customer', $customer);
 
             if ($this->input->post('customer_type') == 1) {
 
@@ -469,17 +470,21 @@ class Customer extends CI_Controller
             }
 
             $this->common_model->save_data('customer_document', $doc);
+
             $use = array(
+
                 'customer_id' => $customer_id,
                 'department_type' => 4,
                 'name' => $add['name'],
                 'mobile' => $add['mobile_no'],
                 'email' => $add['email'],
                 'address' => $add['address'],
-                'password' => md5($this->input->post('password')),
+                'password' => md5($this->input->post('passowrd')),
+                // 'password' => md5($add['passowrd']),
                 'show_ps' => $add['password'],
                 'created_by_user_id' => $this->session->userdata('user_id'),
                 'created_at' => date('Y-m-d'),
+
             );
             $this->common_model->save_data('users', $use);
 
@@ -534,7 +539,9 @@ class Customer extends CI_Controller
 
                 <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target=".update_category" onclick="update_customer(' . $row->id . ')" title="Click to Update Customer Details"><i class="fas fa-edit"></i></a>&emsp;
                 
-                <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target=".update_document" onclick="update_customer_document(' . $row->id . ')" title="Click to Update Customer Document Details"><i class="fas fa-book text-success"></i></a>&nbsp;&nbsp;';
+                <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target=".update_document" onclick="update_customer_document(' . $row->id . ')" title="Click to Update Customer Document Details"><i class="fas fa-book text-success"></i></a>&nbsp;&nbsp;
+
+                <a href="javascript:void(0);" onclick="id_card_download1('. $row->id .')" title="Click to Update Customer Document Details"><i class="fas fa-id-card text-primary"></i></a>';
 
 
             if ($row->sta == 1) {
