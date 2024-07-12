@@ -22,6 +22,8 @@ class Agent extends CI_Controller
         $this->load->view('agent/base', $data);
     }
 
+   
+
     public function add_agent_data() {
         $this->form_validation->set_rules('name', 'Full Name', 'required');
         $this->form_validation->set_rules('dob', 'Date of Birth', 'required');

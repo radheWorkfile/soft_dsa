@@ -15,13 +15,18 @@
 
         function index()
         {
-           
+
             $data['title']           = 'Dashboard';
             $data['breadcrumb']      = 'Dashboard';
-            $data['total_customer']  = $this->common_model->count_all_or_cond('customer', array('document_status' => 2,),array('created_by_user_type_id'=> $this->session->userdata('user_id')));
-            $data['follow_customer'] = $this->common_model->count_all_or_cond('customer_document', array('status' => 1, 'document_status' => 1), array('created_by_user_type_id'=> $this->session->userdata('user_id')));
-            $data['approve_customer'] = $this->common_model->count_all_or_cond('customer_document', array('status' => 2, 'document_status' => 2), array('created_by_user_type_id' => $this->session->userdata('user_id')));
-            $data['reject_customer']  = $this->common_model->count_all_or_cond('customer_document', array('status' => 3, 'document_status' => 2), array('created_by_user_type_id' => $this->session->userdata('user_id')));
+            
+            $data['total_customer']  = $this->common_model->count_all_data('customer',array('created_by_user_type_id'=> $this->session->userdata('user_id')),'*');
+          
+            $data['follow_customer'] = $this->common_model->count_all_data('customer_document', array('status' => 1, 'document_status' => 1, 'created_by_user_type_id'=> $this->session->userdata('user_id')),'id');
+
+            $data['approve_customer'] = $this->common_model->count_all_data('customer_document', array('status' => 2, 'document_status' => 2,'created_by_user_type_id'=> $this->session->userdata('user_id')),'id');
+
+            $data['reject_customer']  = $this->common_model->count_all_data('customer_document', array('status' => 3, 'document_status' => 2,'created_by_user_type_id'=> $this->session->userdata('user_id')),'id');
+            
             $data['assing_menu'] = $this->common_model->get_assign_data();
             $this->load->view('employee/base', $data);
         }

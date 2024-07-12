@@ -74,6 +74,11 @@ class Common_model extends CI_Model
         return $this->db->count_all_results();
     }
 
+    function count_all_data($table,$val,$sel)
+    {
+        return $this->db->select($sel)->where($val)->get($table)->result_array();
+    }
+
     public function sum_all($sum, $table, $where = "1=1")
     {
         $this->db->select_sum($sum);

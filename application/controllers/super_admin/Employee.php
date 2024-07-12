@@ -25,15 +25,16 @@
 
         public function add_employee_data() {
 
-            $this->form_validation->set_rules('name', 'Name', 'required');
+            $this->form_validation->set_rules('name', 'Full Name', 'required');
             $this->form_validation->set_rules('dob', 'Date of Birth', 'required');
             $this->form_validation->set_rules('address', 'Address', 'required');
             $this->form_validation->set_rules('mobile_no', 'Mobile No.', 'required');
             $this->form_validation->set_rules('email', 'Email', 'required|is_unique[employee.email]');
+            $this->form_validation->set_rules('password', 'Password', 'required|is_unique[employee.password]');
             $this->form_validation->set_rules('aadhar_card_no', 'Aadhar Card No.', 'required');
             $this->form_validation->set_rules('pan_no', 'Pan No.', 'required');
-            $this->form_validation->set_rules('password', 'Password', 'required|is_unique[employee.Password]');
 
+            
             if($this->form_validation->run() == TRUE) {
 
                 $add = $this->input->post();

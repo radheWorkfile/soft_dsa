@@ -57,6 +57,8 @@ class Customer extends CI_Controller
     public function add_customer_data()
     {
 
+        
+
         $this->form_validation->set_rules('name', 'Name', 'required');
         $this->form_validation->set_rules('dob', 'Date of Birth', 'required');
         $this->form_validation->set_rules('address', 'Address', 'required');

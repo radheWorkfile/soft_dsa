@@ -77,7 +77,7 @@
                                         </div>
                                         <div>
                                             <p class="text-muted text-uppercase fw-semibold font-size-13">Total customer</p>
-                                            <h4 class="mb-1 mt-1"><?php echo $total_customer; ?></h4>
+                                            <h4 class="mb-1 mt-1"><?php echo count($total_customer); ?></h4>
                                         </div>
                                         <center><a href="<?php echo base_url('employee/Customer/manage_customer') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a></center>
                                     </div>
@@ -97,7 +97,7 @@
                                         </div>
                                         <div>
                                             <p class="text-muted text-uppercase fw-semibold font-size-13">Follow Up Customer</p>
-                                            <h4 class="mb-1 mt-1"><?php echo $follow_customer; ?></h4>
+                                            <h4 class="mb-1 mt-1"><?php echo count($follow_customer); ?></h4>
                                         </div>
                                         <center><a href="<?php echo base_url('employee/Customer/manage_follow_customer') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a></center>
                                     </div>
@@ -116,7 +116,7 @@
                                         </div>
                                         <div>
                                             <p class="text-muted text-uppercase fw-semibold font-size-13">Approved Customer</p>
-                                            <h4 class="mb-1 mt-1"><?php echo $approve_customer; ?></h4>
+                                            <h4 class="mb-1 mt-1"><?php echo count($approve_customer); ?></h4>
                                         </div>
                                         <center><a href="<?php echo base_url('employee/Customer/manage_approve_customer') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a></center>
                                     </div>
@@ -135,7 +135,7 @@
                                         </div>
                                         <div>
                                             <p class="text-muted text-uppercase fw-semibold font-size-13">Reject Customer</p>
-                                            <h4 class="mb-1 mt-1"><?php echo $reject_customer; ?></h4>
+                                            <h4 class="mb-1 mt-1"><?php echo count($reject_customer); ?></h4>
                                         </div>
                                         <center><a href="<?php echo base_url('employee/Customer/manage_reject_customer') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a></center>
                                     </div>

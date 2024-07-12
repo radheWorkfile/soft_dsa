@@ -18,11 +18,17 @@ class Dashboard extends CI_Controller
     {
         $data['title']          = 'Dashboard';
         $data['breadcrumb']     = 'Dashboard';
+
         $data['total_loan']     = $this->common_model->count_all('customer_document', array('customer_id' => $this->session->userdata('customer_id')));
+
         $data['pending_loan']   = $this->common_model->count_all('customer_document', array('customer_id' => $this->session->userdata('customer_id'), 'status' => 1));
+
         $data['approve_loan']   = $this->common_model->count_all('customer_document', array('customer_id' => $this->session->userdata('customer_id'), 'status' => 2));
+
         $data['reject_loan']    = $this->common_model->count_all('customer_document', array('customer_id' => $this->session->userdata('customer_id'), 'status' => 3));
+
         $data['loan_amount']    = $this->common_model->sum_all('loan_amount', 'customer', array('customer_id' => $this->session->userdata('customer_id')));
+        
         $this->load->view('customer/base', $data);
     }
     
